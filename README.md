@@ -15,8 +15,38 @@ https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application?slide=3
 
 ## Instrument Sprint Petclinic App 
 
+0. Install SmartAgent (optional) 
 1. Follow the steps described here (https://github.com/spring-projects/spring-petclinic) and run the app. 
 2. Visit http://localhost:8080 in your browser.
+3. Download the Splunk Otel Distro JVM agent https://github.com/signalfx/splunk-otel-java
+```
+curl -L https://github.com/signalfx/splunk-otel-java/releases/latest/download/splunk-otel-javaagent-all.jar \
+     -o splunk-otel-javaagent.jar
+```
+4. Review config options https://github.com/signalfx/splunk-otel-java/blob/main/docs/advanced-config.md
+
+```
+export OTEL_EXPORTER_JAEGER_ENDPOINT= <The Jaeger endpoint to connect to, default to http://localhost:9080/v1/trace> 
+export OTEL_TRACES_EXPORTER= <Select the span exporter to use, default to jaeger-thrift-splunk>
+
+```
+
+5. If you prefer not to run the app from Maven directly using the Spring Boot Maven plugin so that it will pick up changes that you make in the project immediately, add the folloiwng jvmArguments option. This lets you you add the instrumentation agent in your run time. 
+
+```
+ <jvmArguments>
+   ${spring-boot.run.jvmArguments}
+ </jvmArguments>
+```
+
+6. Run the app with the runtime parameters below
+
+```
+./mvnw spring-boot:run -Dotel.javaagent.debug=true -Dspring-boot.run.jvmArguments="-javaagent:./splunk-otel-javaagent.jar" 
+```
+
+
+
 
 
 
