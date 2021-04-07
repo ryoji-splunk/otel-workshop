@@ -22,6 +22,6 @@ pip install splunk-opentelemetry
 splk-py-trace-bootstrap
 ```
 
-3. 
+3. Run !
 
 Reference: https://github.com/signalfx/splunk-otel-python, https://opentelemetry-python.readthedocs.io/en/latest/examples/auto-instrumentation/README.html
