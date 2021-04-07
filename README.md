@@ -68,9 +68,80 @@ https://mvnrepository.com/artifact/io.opentelemetry
 
 
 ```
+2. Add the import statement 
+
+```
+import io.opentelemetry.api.trace.Span;
+
+```
 
 
-2. 
+3. Locate the following block of code from OwnerController.java
+```
+public String processCreationForm(@Valid Owner owner, BindingResult result) {
+
+```
+4. Add the following lines. A common need when instrumenting an application is to capture additional application-specific or business-specific information as additional attributes to an existing span from the automatic instrumentation. Grab the current span with Span.current() and use the setAttribute() methods:
+
+```
+Span span = Span.current();
+span.setAttribute("first_name", owner.getFirstName());
+span.setAttribute("last_name", owner.getLastName());
+
+```
+
+
+## Creating spans around methods
+To capture a span corresponding to one of your methods, you can 
+
+1. Add the @WithSpan annotation OR 
+
+```
+
+@WithSpan
+public String createNewSpan2(Span parentspan) {
+     Span span = Span.current();
+
+```
+
+2. Add the OTEL_INSTRUMENTATION_METHODS_INCLUDE environemnt variable 
+
+```
+OTEL_INSTRUMENTATION_METHODS_INCLUDE=my.package.MyClass1[method1,method2];my.package.MyClass2[method3]
+
+```
+
+## Creating spans manually with a Tracer 
+
+Creating spans manually with a Tracer
+
+If @WithSpan doesn't work for your specific use case, you can take advantage of underlying OpenTelemetry API which allows you to obtain a tracer that can be used to manually create spans and execute code within the scope of that span.
+
+E.g. 
+
+```
+private static final String INSTRUMENTATION_NAME = OwnerController.class.getName();
+private static final OpenTelemetry openTelemetry = OpenTelemetrySdkAutoConfiguration.initialize();
+private static final Tracer tracer = openTelemetry.getTracer(INSTRUMENTATION_NAME);
+
+...
+
+
+Span span =
+     tracer.spanBuilder("importantwork2").setParent(Context.current().with(parentspan)).startSpan();
+     try {
+		span.setAttribute("abc", "def"); // set our attribute
+     }finally {
+		span.end();
+     }
+
+```
+
+
+
+
+
+
 
 
 Reference: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/manual-instrumentation.md
