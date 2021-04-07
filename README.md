@@ -13,7 +13,7 @@ https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application?slide=3
 
 
 
-## Instrument Sprint Petclinic App 
+## Auto Instrument Sprint Petclinic App 
 
 0. Install SmartAgent (optional) 
 1. Follow the steps described here (https://github.com/spring-projects/spring-petclinic) and run the app. 
@@ -45,6 +45,35 @@ export OTEL_TRACES_EXPORTER= <Select the span exporter to use, default to jaeger
 ./mvnw spring-boot:run -Dotel.javaagent.debug=true -Dspring-boot.run.jvmArguments="-javaagent:./splunk-otel-javaagent.jar" 
 ```
 
+## Getting Deeper Insights into the App by Manually Instrumenting Sprint Petclinic App 
+Review the latest version of all the dependencies from Maven Repo 
+https://mvnrepository.com/artifact/io.opentelemetry
+
+
+1. You'll need to add a dependency on the opentelemetry-api library to get started; if you intend to use the @WithSpan annotation, also include the opentelemetry-extension-annotations dependency.
+
+```
+  <dependencies>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-api</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-extension-annotations</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+  </dependencies>
+
+
+```
+
+
+2. 
+
+
+Reference: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/manual-instrumentation.md
 
 
 
