@@ -1,7 +1,7 @@
-# Welcome to the OpenTelemetry Workshop 
+# Welcome to the OpenTelemetry Workshop - Java 
 
 ## Overview
-### 1. Learn to instrument a Java Spring app with OpenTelemetry. 
+### Learn to instrument a Java Spring app with OpenTelemetry. 
 Spring Petclinic App: https://github.com/spring-projects/spring-petclinic
 
 Understanding the Spring Petclinic application with a few diagrams: 
