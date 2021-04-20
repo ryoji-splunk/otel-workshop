@@ -1,8 +1,8 @@
 # Setting up Otel Collector as a Service (Proxy)
 ### Agenda: Send both traces and host metrics to Splunk via Otel Collector. 
 
-**Instrumented Application --Zipkin--> SmartAgent(0.0.0.0:9080/v1/trace) --Zipkin--> OtelCollector(0.0.0.0:9411/v2/trace && 0.0.0.0:9943) --Zipkin--> Splunk
-**
+
+**Instrumented Application --Zipkin--> SmartAgent(0.0.0.0:9080/v1/trace) --Zipkin--> OtelCollector(0.0.0.0:9411/v2/trace && 0.0.0.0:9943) --Zipkin--> Splunk**
 
 ## 1. Install Splunk OpenTelemetry Collector as gateway. 
 ```
