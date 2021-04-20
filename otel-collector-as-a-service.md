@@ -15,9 +15,18 @@ You should be able to see the following message as the installation script gets 
 
 By default, the agent_config.yaml is used.  
 
+Make sure that the smart agent can connect to the newly configured otel collector. 
+E.g. Do telnet from the host where you are going to install SmartAgent. 
+```
+telent <OpenTelemetryCollectorURL> 9943
+
+telent <OpenTelemetryCollectorURL> 9411
+```
+
 Ref:
 - Instalation Doc: https://github.com/signalfx/splunk-otel-collector/blob/main/docs/getting-started/linux-installer.md
 - The available options can be found here: https://github.com/signalfx/splunk-otel-collector/blob/main/internal/buildscripts/packaging/installer/install.sh
+- SignalfxReceiver (with TLS option): https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver
 
 ## 2. Install Smart Agent 
 
