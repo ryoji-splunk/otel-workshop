@@ -25,7 +25,8 @@ and the environment file is located at /etc/otel/collector/splunk-otel-collector
 By default, the agent_config.yaml is used.  
 
 Make sure that the smart agent can connect to the newly configured otel collector. 
-E.g. Do telnet from the host where you are going to install SmartAgent. 
+
+E.g. Do telnet from the host where you are going to install SmartAgent on. 
 ```
 telent <OpenTelemetryCollectorURL> 9943
 
