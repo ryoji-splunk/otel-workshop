@@ -45,8 +45,10 @@ curl -sSL https://dl.signalfx.com/signalfx-agent.sh > /tmp/signalfx-agent.sh;
 sudo sh /tmp/signalfx-agent.sh --realm us1 -- <YOUR_ACCESS_TOKEN>
 
 ```
-- Make sure that the agent is up running by checking it status 
-- E.g. sudo signalfx-agent status
+- To verify that you've successfully installed the Smart Agent, copy and paste the following command into your terminal.
+```
+sudo signalfx-agent status
+```
 
 ## 3. Make the following changes to the files 
 
