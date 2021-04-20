@@ -2,7 +2,7 @@
 ### Agenda: Send both traces and host metrics to Splunk via Otel Collector. 
 
 
-**Instrumented Application --> SmartAgent(0.0.0.0:9080/v1/trace) --> OtelCollector(0.0.0.0:9411/v2/trace && 0.0.0.0:9943) --> Splunk**
+**Instrumented Application-->SmartAgent(0.0.0.0:9080/v1/trace)-->OtelCollector(0.0.0.0:9411/v2/trace && 0.0.0.0:9943)-->Splunk**
 
 ## 1. Install Splunk OpenTelemetry Collector as gateway. 
 ```
