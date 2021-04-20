@@ -10,8 +10,17 @@ curl -sSL https://dl.signalfx.com/splunk-otel-collector.sh > /tmp/splunk-otel-co
 sudo sh /tmp/splunk-otel-collector.sh --realm us1 --mode gateway -- <YOUR_ACCESS_TOKEN>
 ```
 
-You should be able to see the following message as the installation script gets executed 
-"The collector's main configuration file is located at /etc/otel/collector/**gateway_config.yaml**"
+You should be able to see the following message as the installation script gets executed.
+
+```
+The Splunk OpenTelemetry Connector for Linux has been successfully installed.
+
+Make sure that your system's time is relatively accurate or else datapoints may not be accepted.
+
+The collector's main configuration file is located at /etc/otel/collector/gateway_config.yaml,
+and the environment file is located at /etc/otel/collector/splunk-otel-collector.conf.
+
+```
 
 By default, the agent_config.yaml is used.  
 
