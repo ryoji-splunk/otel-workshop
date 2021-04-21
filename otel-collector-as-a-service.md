@@ -5,6 +5,9 @@
 **Instrumented Application-->SmartAgent(0.0.0.0:9080/v1/trace)-->OtelCollector(0.0.0.0:9411/v2/trace && 0.0.0.0:9943)-->Splunk**
 
 ## 1. Install Splunk OpenTelemetry Collector as gateway. 
+
+By default, Splunk OpenTelemetry Collector gets installed as the agent_config.yaml is used.  
+
 ```
 curl -sSL https://dl.signalfx.com/splunk-otel-collector.sh > /tmp/splunk-otel-collector.sh;
 sudo sh /tmp/splunk-otel-collector.sh --realm us1 --mode gateway -- <YOUR_ACCESS_TOKEN>
@@ -21,8 +24,6 @@ The collector's main configuration file is located at /etc/otel/collector/gatewa
 and the environment file is located at /etc/otel/collector/splunk-otel-collector.conf.
 
 ```
-
-By default, the agent_config.yaml is used.  
 
 Make sure that the smart agent can connect to the newly configured otel collector. 
 
