@@ -6,7 +6,7 @@
 
 ## 1. Install Splunk OpenTelemetry Collector as gateway. 
 
-By default, Splunk OpenTelemetry Collector gets installed as the agent_config.yaml is used.  
+By default, Splunk OpenTelemetry Collector gets installed as agent (agent_config.yaml is used). Make sure to install as gateway by adding the mode option. 
 
 ```
 curl -sSL https://dl.signalfx.com/splunk-otel-collector.sh > /tmp/splunk-otel-collector.sh;
